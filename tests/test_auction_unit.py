@@ -4,14 +4,16 @@ import datetime
 from datetime import timezone
 import pytest
 
+endDate = int(datetime.datetime(2022, 3, 16, 14, 55, 0).replace(
+        tzinfo=timezone.utc).timestamp())
+
 def test_deploy():
     account = accounts[0]
     # Mint the Dummy ERC20 Token to be sold
     dumDumToken = DummyDummy.deploy({"from": account})
     # Dates in epoch time
     startDate = int(time.time())
-    endDate = int(datetime.datetime(2022, 3, 15, 14, 55, 0).replace(
-        tzinfo=timezone.utc).timestamp())
+    
     # 18 decimals
     startPrice = 0.0001 * 10**18
     auction = DutchAuction.deploy(
@@ -32,8 +34,8 @@ def test_bid():
     # Defines the parameters of the constructor of the auction contract
     # Dates in Unix Time
     startDate = int(time.time())
-    endDate = int(datetime.datetime(2022, 3, 15, 14, 55, 0).replace(
-        tzinfo=timezone.utc).timestamp())
+    # endDate = int(datetime.datetime(2022, 3, 15, 14, 55, 0).replace(
+    #     tzinfo=timezone.utc).timestamp())
     startPrice = 0.0001 * 10**18
     # Deploy the contract
     auction = DutchAuction.deploy(
@@ -60,8 +62,8 @@ def test_bid_lower():
     # Defines the parameters of the constructor of the auction contract
     # Dates in Unix Time
     startDate = int(time.time())
-    endDate = int(datetime.datetime(2022, 3, 15, 14, 55, 0).replace(
-        tzinfo=timezone.utc).timestamp())
+    # endDate = int(datetime.datetime(2022, 3, 15, 14, 55, 0).replace(
+    #     tzinfo=timezone.utc).timestamp())
     startPrice = 0.0001 * 10**18
     # Deploy the contract
     auction = DutchAuction.deploy(
@@ -86,8 +88,8 @@ def test_bid_higher():
     # Defines the parameters of the constructor of the auction contract
     # Dates in Unix Time
     startDate = int(time.time())
-    endDate = int(datetime.datetime(2022, 3, 15, 14, 55, 0).replace(
-        tzinfo=timezone.utc).timestamp())
+    # endDate = int(datetime.datetime(2022, 3, 15, 14, 55, 0).replace(
+    #     tzinfo=timezone.utc).timestamp())
     startPrice = 0.0001 * 10**18
     # Deploy the contract
     auction = DutchAuction.deploy(
